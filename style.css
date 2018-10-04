@@ -1,0 +1,89 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Kodchasan', sans-serif;
+}
+
+body {
+	width: 300px;
+	margin: 0 auto;
+}
+
+header {
+	text-align: center;
+	margin: 3em;
+}
+
+.grid {
+	background-color: #6666FF;
+	height: 7em;
+	width: 7em;
+	margin: 0 auto;
+}
+
+button {
+	margin: 3.2em;
+	height: 3em;
+	width: 6.6em;
+	border: none;
+	background-color: skyblue;
+	color: white;
+	border-radius: 1em;
+}
+
+button:hover {
+	background-color: yellow;
+	color: black;
+}
+
+/*how to put buttons on notification banner, when clicked it goes away */
+
+#notification {
+	display: none;
+	background-color: #CD5C5C;
+	position: absolute;
+	height: 5em;
+	width: 10em;
+	border-radius: 1em;
+	margin-left: -10px;
+	margin-top: -9.5em;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	font-size: 2em;
+	color: white;
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+	10%, 90% {
+	transform: translate3d(-1px, 0, 0);
+	}
+
+	20%, 80% {
+	transform: translate3d(2px, 0, 0);
+	}
+
+	30%, 50%, 70% {
+	transform: translate3d(-4px, 0, 0);
+	}
+
+	40%, 60% {
+	transform: translate3d(4px, 0, 0);
+	}
+}
+
+#notification:hover {
+	opacity: .8;
+	/*add transition here*/
+}
+
+.btnReplay {
+	padding: none;
+	margin: none;
+}
+
+#message {
+	text-align: center;
+}
+
+/* shake credits to SARAH DRASNER @ https://css-tricks.com/ */

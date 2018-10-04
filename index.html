@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic Tac Bot</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
+</head>
+<body>
+	<header>Tic Tac Bot</header>
+
+	<table class='board'>
+		<tr>
+			<td class='grid' id='1'></td>
+			<td class='grid' id='2'></td>
+			<td class='grid' id='3'></td>
+		</tr>
+		<tr>
+			<td class='grid' id='4'></td>
+			<td class='grid' id='5'></td>
+			<td class='grid' id='6'></td>
+		</tr>
+		<tr>
+			<td class='grid' id='7'></td>
+			<td class='grid' id='8'></td>
+			<td class='grid' id='9'></td>
+		</tr>
+	</table>
+
+	<div id='scoreBoard'></div>
+
+	<p id='message'></p>
+
+	<section >
+		<div id='notification'>
+			<div id="text"></div>
+			<!-- <button onclick="createBoard()" class='btnReplay'>Replay!</button> -->
+		</div>
+
+		<button class='btn1-player'>Solo Fun</button>
+		<button class='btn2-players'>2 Players</button>
+
+	</section>
+	
+	<script src="app.js"></script>
+</body>
+</html>
