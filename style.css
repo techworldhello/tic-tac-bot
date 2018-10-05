@@ -13,6 +13,16 @@ header {
 	margin: 3em;
 }
 
+.blink-title {
+	animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  80% {
+    opacity: 0;
+  }
+}
+
 .grid {
 	background-color: #6666FF;
 	height: 7em;

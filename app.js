@@ -33,33 +33,22 @@ const winCombos = [
 	['3', '5', '7']
 ];
 
-const aiWinCombos = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[2, 4, 6]
-];
-
-
 document.querySelector('.btn1-player').addEventListener('click', createBoardAI);
 document.querySelector('.btn2-players').addEventListener('click', createBoardHuman);
 
 function createBoardHuman() {
+	document.querySelector('.blink-title').classList.remove('blink-title')
 	board.forEach (elem => {
 		elem.addEventListener('click', startGameHuman);
 	});
 }
 
 function createBoardAI() {
+	document.querySelector('.blink-title').classList.remove('blink-title')
 	board.forEach (elem => {
 		elem.addEventListener('click', startGameAI);
 	});
 }
-
 
 function startGameHuman(e) {
 	if (e.target.classList.contains('played')) {
@@ -88,26 +77,31 @@ function startGameHuman(e) {
 
 function startGameAI(e) {
 	if (e.target.classList.contains('played')) {
-		e.target.style.removeProperty('background-color')
-
+		e.target.style.removeProperty('background-color');
 	} else {
 		e.target.classList.add('played');
 		console.log(e.target)
 
-		//playerTurns(playerTurnCount++, player1, AI);
 		spotsPlayed.p1.push(e.target.id)
 		e.target.style.opacity = 0.7;
-		checkWin(spotsPlayed.p1); 
+		message.innerText = `AI's thinking..`;
+		message.style.backgroundColor = 'lightblue';
+		checkWinAI(spotsPlayed.p1);
 
-		const aiTarget = AITurn();
-		if (aiTarget !== undefined) {
-			aiTarget.style.opacity = 0.3;
-			//adding back classlist to keep track
-			aiTarget.classList.add('played');
-			checkWinAI();
-		}
+		setTimeout(() => {
+			const aiTarget = AITurn();
+			if (aiTarget !== undefined) {
+				aiTarget.style.opacity = 0.3;
+				message.innerText = `player 1, your turn!`;
+				message.style.backgroundColor = 'yellow';
+				//adding back classlist to keep track
+				aiTarget.classList.add('played');
+				console.log(aiTarget.classList)
+				checkWinAI(spotsPlayed.ai);
+			}
+		}, 600)
 	}
-	if (document.querySelectorAll('.played').length == grids.length) {
+	if (spotsPlayed.ai.length + spotsPlayed.p1.length + 1 == grids.length) {
 		declareWinner('Draw!');
 	}
 }
@@ -117,8 +111,8 @@ function AITurn() {
 	// filter out classes containing 'played'
 	const remainingSpots = Array.from(grids).filter(square => 
 		!square.classList.contains('played')); 
-	let randomSpots = Math.floor(Math.random() * (remainingSpots.length + 1));
-	spotsPlayed.ai.push(randomSpots);
+	let randomSpots = Math.floor(Math.random() * remainingSpots.length);
+	spotsPlayed.ai.push(remainingSpots[randomSpots].id);
 	return remainingSpots[randomSpots];
 }
 
@@ -166,18 +160,18 @@ function checkWin(playerArray) {
 	})
 }
 
-function checkWinAI() {
+function checkWinAI(playerArray) {
     let gameWon = false;
-    aiWinCombos.forEach( win => {
+    winCombos.forEach( win => {
 		let turns = 0;
 		win.forEach (elem => {
-			if (spotsPlayed.ai.indexOf(elem) > -1) {
+			if (playerArray.indexOf(elem) > -1) {
 				turns++;
 			}
 			if (turns === 3) {
 				gameWon = true;
 				//updateScores(playerTurnCount % 2 ? player1 : player2, playerTurnCount % 2 ? scores.p1 : scores.p2);
-	            declareWinner(playerTurnCount % 2 ? 'AI won!' : ' Human congrats!');
+	           declareWinner(playerArray ? 'Humans rule!' : 'AI won!'); //fix!!!!
 			}
 		});
 	})
