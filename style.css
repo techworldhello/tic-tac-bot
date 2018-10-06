@@ -30,6 +30,11 @@ header {
 	margin: 0 auto;
 }
 
+.buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
 button {
 	margin: 3.2em;
 	height: 3em;
@@ -44,8 +49,6 @@ button:hover {
 	background-color: yellow;
 	color: black;
 }
-
-/*how to put buttons on notification banner, when clicked it goes away */
 
 #notification {
 	display: none;
@@ -87,13 +90,13 @@ button:hover {
 	/*add transition here*/
 }
 
-.btnReplay {
-	padding: none;
-	margin: none;
-}
-
 #message {
 	text-align: center;
+}
+
+.scoreboard {
+	display: flex;
+	justify-content: space-between;
 }
 
 /* shake credits to SARAH DRASNER @ https://css-tricks.com/ */

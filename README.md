@@ -1,6 +1,11 @@
-GA-first-project-Tic-Tac-Bot
+First project at GA
 
-Play here :  https://techworldhello.github.io/tic-tac-bot/
+Tic Tac Bot
+
+Play here - https://techworldhello.github.io/tic-tac-bot/
+
+Admittedly, I started off with a theme in mind and and slowly veered to the result you see now when my original plan didn’t go as planned. And due to time constraint, I decided to go with something that works rather than go down.
+
 
 Initial plan of attack:
 
@@ -28,3 +33,6 @@ Areas to improve:
 add a score board
 refactor the code (a lot of repetition)
 make the borders surrounding the grids unclickable
+fix AI's winning message
+issue with draw detection 
+disable other button when a mode is selected
