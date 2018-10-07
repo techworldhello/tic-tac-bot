@@ -175,6 +175,7 @@ function updateScores(player, playScore) {
 }
 
 function replay() {
+	playerTurnCount = 0;
 	message.innerText = 'Get ready to rebattle!';
 	message.style.backgroundColor = 'lightblue';
 	setTimeout(() => {
