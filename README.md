@@ -14,7 +14,7 @@ But in case you'd like to know, here's a simple breakdown:
 * turns are alternated one to one
 * get 3 grids in a row to win
 
-# Initial plan of attack:
+## Initial plan of attack:
 
 * create a board
 * make grids clickable and assign colours to them
@@ -24,13 +24,13 @@ But in case you'd like to know, here's a simple breakdown:
 * declare winner/draw
 * attempt 'AI' version
 
-# Most difficult:
+## Most difficult:
 
 * game logic on matching the players' arrays to the nested winning array
 * making all of the functions interact well and bug free after building both 1 player and 2 player mode (still working on this!)
 * refactoring 🤔 
 
-# Areas to improve:
+## Areas to improve:
 
 * finish the score board component
 * practice DRY code and refactoring
