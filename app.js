@@ -176,8 +176,10 @@ function updateScores(player, playScore) {
 
 function replay() {
 	message.innerText = 'Get ready to rebattle!';
+	message.style.backgroundColor = 'lightblue';
 	setTimeout(() => {
 		message.innerText = 'Aaaannnnd go!';
+		message.style.backgroundColor = 'yellow';
 	}, 1000)
 	for (score in spotsPlayed) {
 		if (spotsPlayed.hasOwnProperty(score)) {
