@@ -1,6 +1,6 @@
-const message = document.querySelector('#message');
 const board = document.querySelectorAll('.board');
 const grids = document.querySelectorAll('.grid');
+const message = document.querySelector('#message');
 const aiMusic = new Audio('sounds/ClowningAround.mp3');
 const humanMusic = new Audio('sounds/ElevatorMusic.mp3');
 const player1 = 'Player 1';
@@ -109,7 +109,7 @@ function startGameAI(e) {
 function aiTurn() { 
 	const remainingSpots = Array.from(grids).filter(square => 
 		!square.classList.contains('played')); 
-	let randomSpots = Math.floor(Math.random() * remainingSpots.length);
+	const randomSpots = Math.floor(Math.random() * remainingSpots.length);
 	spotsPlayed.ai.push(remainingSpots[randomSpots].id);
 	return remainingSpots[randomSpots];
 }
@@ -182,9 +182,9 @@ function replay() {
 		message.innerText = 'Aaaannnnd go!';
 		message.style.backgroundColor = 'yellow';
 	}, 1000)
-	for (score in spotsPlayed) {
-		if (spotsPlayed.hasOwnProperty(score)) {
-			spotsPlayed[score] = [];
+	for (spot in spotsPlayed) {
+		if (spotsPlayed.hasOwnProperty(spot)) {
+			spotsPlayed[spot] = [];
 		}
 	}
 	grids.forEach (elem => {
