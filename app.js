@@ -36,7 +36,7 @@ document.querySelector('.btn1-player').addEventListener('click', createBoardAI);
 
 function createBoardHuman() {
 	document.querySelector('.blink-title').classList.remove('blink-title');
-	playMusic('humanGame');
+	humanMusic.play();
 	board.forEach (elem => {
 		elem.addEventListener('click', startGameHuman);
 	});
@@ -44,18 +44,10 @@ function createBoardHuman() {
 
 function createBoardAI() {
 	document.querySelector('.blink-title').classList.remove('blink-title');
-	playMusic();
+	aiMusic.play()
 	board.forEach (elem => {
 		elem.addEventListener('click', startGameAI);
 	});
-}
-
-function playMusic(music) {
-	if (music == 'humanGame') {
-		humanMusic.play();
-	} else {
-		aiMusic.play();
-	}
 }
 
 function startGameHuman(e) {
@@ -65,7 +57,7 @@ function startGameHuman(e) {
 		e.target.classList.add('played');
 		// console.log(e.target)
 
-		playerTurns(playerTurnCount++, player1, player2);
+		twoPlayerTurns(playerTurnCount++, player1, player2);
 		if (playerTurnCount % 2) {
 			spotsPlayed.p1.push(e.target.id)
 			e.target.style.opacity = 0.7;
@@ -90,7 +82,6 @@ function startGameAI(e) {
 		// console.log(e.target)
 
 		spotsPlayed.p1.push(e.target.id)
-		playerTurnCount = playerTurnCount + 2;
 		e.target.style.opacity = 0.7;
 		message.innerText = `AI's thinking..`;
 		message.style.backgroundColor = 'lightblue';
@@ -102,7 +93,7 @@ function startGameAI(e) {
 				aiTarget.style.opacity = 0.3;
 				message.innerText = `player 1, your turn!`;
 				message.style.backgroundColor = 'yellow';
-				
+
 				//adding back classlist to keep track
 				aiTarget.classList.add('played');
 				checkWin(spotsPlayed.ai);
@@ -126,7 +117,7 @@ function aiTurn() {
 
 let playerTurnCount = 0;
 
-function playerTurns(playerTurnCount, p1, p2) {
+function twoPlayerTurns(playerTurnCount, p1, p2) {
 	if (playerTurnCount % 2) { 		
 		message.innerText = p1 + ', go for it';
 		message.style.backgroundColor = 'lightblue';
@@ -166,13 +157,13 @@ function checkWin(playerArray) {
 			}
 			if (turns === 3) {
 				gameWon = true;
-				updateScores(playerTurnCount % 2 ? player1 : player2, playerTurnCount % 2 ? scores.p1 : scores.p2);
+				// updateScores(playerTurnCount % 2 ? player1 : player2, playerTurnCount % 2 ? scores.p1 : scores.p2);
 				declareWinner(playerTurnCount % 2 ? player1 + ' congrats!' : player2 + ' yay!');
+				// 1p mode displaying one player's congrats msg only
 			}
 		});
 	})
 }
-
 
 
 function updateScores(player, playScore) {
@@ -185,6 +176,9 @@ function updateScores(player, playScore) {
 
 function replay() {
 	message.innerText = 'Get ready to rebattle!';
+	setTimeout(() => {
+		message.innerText = 'Aaaannnnd go!';
+	}, 1000)
 	for (score in spotsPlayed) {
 		if (spotsPlayed.hasOwnProperty(score)) {
 			spotsPlayed[score] = [];
