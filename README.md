@@ -2,7 +2,7 @@
 
 What you're about to view is a rough version of my first JavaScript project. There are bugs to be fixed, features to be added and UI to be improved. This section will get updated as I make those changes. 
 
-# In the meantime, play here - https://techworldhello.github.io/tic-tac-bot/
+In the meantime, play here - https://techworldhello.github.io/tic-tac-bot/
 
 ## Rules:
 
